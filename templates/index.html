@@ -10,7 +10,7 @@
 	{% if usuario_actual %}
 		<p>Bienvenido, {{ usuario_actual.nombre }} (<a href="{{ url_for('cerrar_sesion') }}">cerrar sesión</a>)</p>
 	{% else %}
-		<p><a href="{{ url_for('iniciar_sesion') }}">Iniciar sesión</a> o <a href="{{ url_for('registrarse') }}">Registrarse</a></p>
+		<p><a href="{{ url_for('login') }}">Iniciar sesión</a> o <a href="{{ url_for('signup') }}">Registrarse</a></p>
 	{% endif %}
 	
 	<h2>Bicicletas disponibles</h2>

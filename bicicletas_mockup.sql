@@ -13,8 +13,21 @@ CREATE TABLE usuarios (
   nombre VARCHAR(50) NOT NULL,
   correo_electronico VARCHAR(50) NOT NULL,
   telefono VARCHAR(20) NOT NULL,
+  contrasena varchar(150) NOT NULL,
   identificacion VARCHAR(20) NOT NULL
 );
+
+INSERT INTO usuarios (nombre, correo_electronico, telefono, contrasena, identificacion) VALUES
+('Juan Pérez', 'juanperez@gmail.com', '555-1234', 'contra123', '1234567890'),
+('María García', 'mariagarcia@hotmail.com', '555-5678', 'password123', '0987654321'),
+('Pedro Rodríguez', 'pedrorodriguez@yahoo.com', '555-4321', 'abcd1234', '2468013579'),
+('Ana Martínez', 'anamartinez@gmail.com', '555-8765', 'contraseña123', '1357924680'),
+('Luisa Gómez', 'luisagomez@hotmail.com', '555-2468', 'password456', '8024681357'),
+('Jorge Sánchez', 'jorgesanchez@yahoo.com', '555-1357', 'abcde12345', '9753102468'),
+('Lucía Hernández', 'luciahernandez@gmail.com', '555-3691', 'contraseña456', '8642091357'),
+('Diego Torres', 'diegotorres@hotmail.com', '555-8024', 'password789', '7530192468'),
+('Carla Ramírez', 'carlaramirez@yahoo.com', '555-9753', 'abcdef123456', '4681357920'),
+('Roberto Flores', 'robertoflores@gmail.com', '555-8642', 'contraseña789', '3579246801');
 
 -- Crear la tabla de bicicletas
 DROP TABLE IF EXISTS bicicletas;
