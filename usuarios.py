@@ -9,6 +9,7 @@ def lee_diccionario_usuarios(config:dict)->dict:
         cur.execute("SELECT id, nombre, correo_electronico, telefono,contrasena,identificacion FROM usuarios")
         for id, nombre, correo_electronico, telefono, password, identificacion in cur.fetchall():
             diccionario[correo_electronico] = {
+                'id' : id,
                 'nombre' : nombre,
                 'correo_electronico' : correo_electronico,
                 'telefono' : telefono,

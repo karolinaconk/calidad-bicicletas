@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rentar</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<form method="POST" action="/alquilar">
+    <label for="fecha_alquiler">El costo del alquiler es $20 por hora</label><br>
+
+    <label for="email">Email del usuario: </label>
+    <input type="text" id="email" name="email" value="{{ session['correo_electronico'] }}" readonly/><br>
+
+    <label>Fecha de Alquiler:</label>
+    <input type="datetime-local" id="fecha_alquiler" name="fecha_alquiler"><br>
+  
+    <label for="fecha_devolucion">Fecha de Devolución:</label>
+    <input type="datetime-local" id="fecha_devolucion" name="fecha_devolucion"><br>
+  
+    <label for="duracion_alquiler">Duración del Alquiler (horas):</label>
+    <input type="number" id="duracion_alquiler" name="duracion_alquiler"><br>
+
+  
+  
+    <input type="submit" value="Guardar" class="button" name="guardar" id="guardar">
+  </form>
+
+</body>
+</html>

@@ -54,13 +54,9 @@ INSERT INTO bicicletas (marca, modelo, tamano, imagen) VALUES
 DROP TABLE IF EXISTS transacciones;
 CREATE TABLE transacciones (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  id_usuario INT NOT NULL,
-  id_bicicleta INT NOT NULL,
+  correo_electronico INT NOT NULL,
   fecha_alquiler DATETIME NOT NULL,
   fecha_devolucion DATETIME NOT NULL,
   duracion_alquiler INT NOT NULL,
-  costo_alquiler FLOAT NOT NULL,
-  estado_pago VARCHAR(20) NOT NULL,
-  FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-  FOREIGN KEY (id_bicicleta) REFERENCES bicicletas(id)
+  costo_alquiler FLOAT NOT NULL
 );

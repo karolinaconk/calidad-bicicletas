@@ -6,9 +6,12 @@
 </head>
 <body>
 	<h1>Bienvenido al Centro Comercial de Rentas de Bicicletas</h1>
-	
+	{% for id,bicicletas in bicicletas.items() %}
+
+	{% endfor %}
 	{% if session['logged_in'] == True %}
 		<p>Bienvenido, {{ session['nombre'] }} (<a href="{{ url_for('logout') }}">cerrar sesión</a>)</p>
+
 	{% else %}
 		<p><a href="{{ url_for('login') }}">Iniciar sesión</a> 
             o
@@ -16,7 +19,15 @@
 	{% endif %}
 	
 	<h2>Bicicletas disponibles</h2>
-	
+
+	Tus rentas :)
+	{% for id,transaccion in transaccion.items() %}
+		<p><strong>Id:</strong> {{ transaccion.id }}</p>
+		<p><strong>Fecha de alquiler:</strong> {{ transaccion.fecha_alquiler }}</p>
+		<p><strong>Fecha devolucion:</strong> {{ transaccion.fecha_devolucion }}</p>
+		<p><strong>Costo:</strong> {{ transaccion.costo_alquiler }}</p>
+	{% endfor %}
+
 	{% for id,bicicletas in bicicletas.items() %}
 		<div>
 			<img src="{{ bicicletas.imagen }}" alt="{{ bicicletas.marca }} {{ bicicletas.modelo }}" style="max-width: 500px;">
@@ -25,7 +36,11 @@
 			<p><strong>Tamaño:</strong> {{ bicicletas.tamano }}</p>
 			<form action="{{ url_for('alquilar') }}" method="post">
 				<input type="hidden" name="id_bicicleta" value="{{ bicicletas.id }}">
-				<button type="submit">Rentar</button>
+                {% if session['logged_in'] == True %}
+				<a href="{{ url_for('alquilar') }}">Rentar</a></p>
+                {% else %}
+                Inicia sesión para alquilar :D
+                {% endif %}
 			</form>
 		</div>
 	{% endfor %}
