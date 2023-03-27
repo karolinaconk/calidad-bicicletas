@@ -7,10 +7,12 @@
 <body>
 	<h1>Bienvenido al Centro Comercial de Rentas de Bicicletas</h1>
 	
-	{% if usuario_actual %}
-		<p>Bienvenido, {{ usuario_actual.nombre }} (<a href="{{ url_for('cerrar_sesion') }}">cerrar sesión</a>)</p>
+	{% if session['logged_in'] == True %}
+		<p>Bienvenido, {{ session['nombre'] }} (<a href="{{ url_for('logout') }}">cerrar sesión</a>)</p>
 	{% else %}
-		<p><a href="{{ url_for('login') }}">Iniciar sesión</a> o <a href="{{ url_for('signup') }}">Registrarse</a></p>
+		<p><a href="{{ url_for('login') }}">Iniciar sesión</a> 
+            o
+            <a href="{{ url_for('signup') }}">Registrarse</a></p>
 	{% endif %}
 	
 	<h2>Bicicletas disponibles</h2>
