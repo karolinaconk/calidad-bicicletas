@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Centro Comercial de Rentas de Bicicletas</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>Bienvenido al Centro Comercial de Rentas de Bicicletas</h1>
+	
+	{% if usuario_actual %}
+		<p>Bienvenido, {{ usuario_actual.nombre }} (<a href="{{ url_for('cerrar_sesion') }}">cerrar sesión</a>)</p>
+	{% else %}
+		<p><a href="{{ url_for('iniciar_sesion') }}">Iniciar sesión</a> o <a href="{{ url_for('registrarse') }}">Registrarse</a></p>
+	{% endif %}
+	
+	<h2>Bicicletas disponibles</h2>
+	
+	{% for bicicleta in bicicletas %}
+		<div>
+			<img src="{{ bicicleta.imagen }}" alt="{{ bicicleta.marca }} {{ bicicleta.modelo }}">
+			<p><strong>Marca:</strong> {{ bicicleta.marca }}</p>
+			<p><strong>Modelo:</strong> {{ bicicleta.modelo }}</p>
+			<p><strong>Tamaño:</strong> {{ bicicleta.tamano }}</p>
+			<form action="{{ url_for('alquilar') }}" method="post">
+				<input type="hidden" name="id_bicicleta" value="{{ bicicleta.id }}">
+				<button type="submit">Rentar</button>
+			</form>
+		</div>
+	{% endfor %}
+</body>
+</html>
