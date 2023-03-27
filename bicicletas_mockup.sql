@@ -23,7 +23,7 @@ CREATE TABLE bicicletas (
   marca VARCHAR(50) NOT NULL,
   modelo VARCHAR(50) NOT NULL,
   tamano VARCHAR(20) NOT NULL,
-  imagen VARCHAR(200) NOT NULL
+  imagen VARCHAR(200) NOT NULL,
 );
 
 INSERT INTO bicicletas (marca, modelo, tamano, imagen) VALUES

@@ -15,14 +15,14 @@
 	
 	<h2>Bicicletas disponibles</h2>
 	
-	{% for bicicleta in bicicletas %}
+	{% for id,bicicletas in bicicletas.items() %}
 		<div>
-			<img src="{{ bicicleta.imagen }}" alt="{{ bicicleta.marca }} {{ bicicleta.modelo }}">
-			<p><strong>Marca:</strong> {{ bicicleta.marca }}</p>
-			<p><strong>Modelo:</strong> {{ bicicleta.modelo }}</p>
-			<p><strong>Tamaño:</strong> {{ bicicleta.tamano }}</p>
+			<img src="{{ bicicletas.imagen }}" alt="{{ bicicletas.marca }} {{ bicicletas.modelo }}">
+			<p><strong>Marca:</strong> {{ bicicletas.marca }}</p>
+			<p><strong>Modelo:</strong> {{ bicicletas.modelo }}</p>
+			<p><strong>Tamaño:</strong> {{ bicicletas.tamano }}</p>
 			<form action="{{ url_for('alquilar') }}" method="post">
-				<input type="hidden" name="id_bicicleta" value="{{ bicicleta.id }}">
+				<input type="hidden" name="id_bicicleta" value="{{ bicicletas.id }}">
 				<button type="submit">Rentar</button>
 			</form>
 		</div>

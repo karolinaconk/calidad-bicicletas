@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from dicc_bicicletas import lee_diccionario_bicicletas
 import mysql.connector
 
 app = Flask(__name__)
@@ -8,6 +9,15 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'adminBikes'
 app.config['MYSQL_DATABASE_PASSWORD'] = '123'
 app.config['MYSQL_DATABASE_DB'] = 'centro_comercial_renta_bicicletas'
+
+config = {
+    'host': '127.0.0.1',
+    'user': 'adminBikes',
+    'password': '123',
+    'db': 'centro_comercial_renta_bicicletas',
+}
+
+dicc_bicicletas = lee_diccionario_bicicletas(config)
 
 # Función para conectarse a la base de datos
 def conectar_bd():
@@ -24,14 +34,15 @@ def conectar_bd():
         return None
 
 # Ruta principal de la página web
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def index():
     conexion = conectar_bd()
     cursor = conexion.cursor()
     cursor.execute('SELECT * FROM bicicletas')
     bicicletas = cursor.fetchall()
     conexion.close()
-    return render_template('index.html', bicicletas=bicicletas)
+    if request.method == 'GET':
+        return render_template('index.html', bicicletas=dicc_bicicletas)
 
 # Ruta para mostrar las bicicletas disponibles
 @app.route('/bicicletas')
