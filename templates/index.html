@@ -17,7 +17,7 @@
 	
 	{% for id,bicicletas in bicicletas.items() %}
 		<div>
-			<img src="{{ bicicletas.imagen }}" alt="{{ bicicletas.marca }} {{ bicicletas.modelo }}">
+			<img src="{{ bicicletas.imagen }}" alt="{{ bicicletas.marca }} {{ bicicletas.modelo }}" style="max-width: 500px;">
 			<p><strong>Marca:</strong> {{ bicicletas.marca }}</p>
 			<p><strong>Modelo:</strong> {{ bicicletas.modelo }}</p>
 			<p><strong>Tamaño:</strong> {{ bicicletas.tamano }}</p>
